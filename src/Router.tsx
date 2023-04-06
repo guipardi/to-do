@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Home } from './pages/Home'
+import { NoTasks } from './pages/NoTaks'
 import { DefaultLayout } from './layouts/DefaultLayout'
 
 export function Router() {
@@ -7,7 +7,7 @@ export function Router() {
     <Routes>
       
       <Route path='/' element={<DefaultLayout />} >
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<NoTasks />} />
       </Route>
       
     </Routes>
