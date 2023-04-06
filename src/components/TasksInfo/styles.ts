@@ -23,3 +23,9 @@ export const CompletedTasks = styled(BaseTasks)`
 export const CreatedTasks = styled(BaseTasks)`
   color: ${(props) => props.theme.purple};
 `
+
+export const CounterTasks = styled.span`
+  padding: 0.125rem 0.5rem;
+  background-color: ${(props) => props.theme["gray-400"]};
+  border-radius: 999px;
+`
