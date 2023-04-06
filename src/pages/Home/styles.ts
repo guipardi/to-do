@@ -23,3 +23,12 @@ export const AlertText = styled.p`
 
   line-height: 22.4px;
 `
+
+export const WithTasks = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1.5rem;
+`
