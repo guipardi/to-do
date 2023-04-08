@@ -1,13 +1,14 @@
 import { AlertText, ClipboardImg, NoTasksContainer, WithTasks } from "./styles";
 import clipboardImg from "../../assets/clipboard.svg"
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TasksContext } from "../../contexts/TasksContext";
 
 export function Home() {
-  const [tasks, setTasks] = useState([''])
-
+  const { tasks } = useContext(TasksContext)
+  console.log(tasks)
   return (
     <>
-      { tasks.length > 1 ? (
+      { tasks.length > 0 ? (
         <WithTasks>
           <h1>Tasks</h1>
         </WithTasks>      
