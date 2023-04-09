@@ -5,7 +5,8 @@ interface Task {
 }
 
 interface TasksContextType {
-  tasks: Task[]
+  tasks: Task[],
+  createNewTask: () => void
 }
 
 export const TasksContext = createContext({} as TasksContextType)
@@ -17,9 +18,13 @@ interface TasksProviderProps {
 export function TasksProvider({children}: TasksProviderProps) {
   const [tasks, setTasks] = useState<Task[]>([])
 
+  function createNewTask() {
+    setTasks([...tasks, {description: 'task1'}])
+  }
+
   return (
     <TasksContext.Provider value={
-      { tasks } 
+      { tasks, createNewTask } 
     }>
       {children}
     </TasksContext.Provider>
