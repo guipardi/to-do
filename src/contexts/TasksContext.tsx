@@ -7,7 +7,8 @@ interface Task {
 
 interface TasksContextType {
   tasks: Task[],
-  createNewTask: (data: any) => void
+  createNewTask: (data: any) => void,
+  deleteTask: (id: string) => void
 }
 
 export const TasksContext = createContext({} as TasksContextType)
@@ -23,9 +24,19 @@ export function TasksProvider({children}: TasksProviderProps) {
     setTasks((state) => [...state, {description: data.description, id: new Date()}])
   }
 
+  function deleteTask(id: string) {
+    const filteredTasks = tasks.filter((task) => {
+      if (String(task.id) !== id) {
+        return task
+      }
+    })
+
+    setTasks(filteredTasks)
+  }
+
   return (
     <TasksContext.Provider value={
-      { tasks, createNewTask } 
+      { tasks, createNewTask, deleteTask } 
     }>
       {children}
     </TasksContext.Provider>

@@ -16,7 +16,7 @@ export function Home() {
             return (
               <TaskBar 
                 key={String(task.id)} 
-                task={task.description}
+                task={task}
               />
             )
           })}
