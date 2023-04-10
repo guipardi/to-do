@@ -2,6 +2,7 @@ import { AlertText, ClipboardImg, NoTasksContainer, WithTasks } from "./styles";
 import clipboardImg from "../../assets/clipboard.svg"
 import { useContext, useState } from "react";
 import { TasksContext } from "../../contexts/TasksContext";
+import { TaskBar } from "./TaskBar";
 
 export function Home() {
   const { tasks } = useContext(TasksContext)
@@ -12,7 +13,12 @@ export function Home() {
       { tasks.length > 0 ? (
         <WithTasks>
           {tasks.map((task) => {
-            return <p key={String(task.id)}>{task.description}</p>
+            return (
+              <TaskBar 
+                key={String(task.id)} 
+                task={task.description}
+              />
+            )
           })}
         </WithTasks>      
       ) : (
