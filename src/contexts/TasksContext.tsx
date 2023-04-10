@@ -2,11 +2,12 @@ import { ReactNode, createContext, useState } from "react";
 
 interface Task {
   description: string
+  id: Date
 }
 
 interface TasksContextType {
   tasks: Task[],
-  createNewTask: () => void
+  createNewTask: (data: any) => void
 }
 
 export const TasksContext = createContext({} as TasksContextType)
@@ -18,8 +19,8 @@ interface TasksProviderProps {
 export function TasksProvider({children}: TasksProviderProps) {
   const [tasks, setTasks] = useState<Task[]>([])
 
-  function createNewTask() {
-    setTasks([...tasks, {description: 'task1'}])
+  function createNewTask(data: any) {
+    setTasks((state) => [...state, {description: data.description, id: new Date()}])
   }
 
   return (

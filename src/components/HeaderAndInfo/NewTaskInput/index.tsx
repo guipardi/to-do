@@ -10,7 +10,7 @@ export function NewTask() {
   const { createNewTask } = useContext(TasksContext)
 
   const newTaskFormSchema = zod.object({
-    description: zod.string().min(0)
+    description: zod.string().min(1).max(30)
   })
 
   type newTaskFormInputs = zod.infer<typeof newTaskFormSchema>
@@ -19,13 +19,17 @@ export function NewTask() {
     resolver: zodResolver(newTaskFormSchema),
   })
 
-  function handleCreateNewTask() {
-    createNewTask()
+  function handleCreateNewTask(data: any) {
+    createNewTask(data)
+    reset()
   }
 
   return (
     <NewTaskContainer onSubmit={handleSubmit(handleCreateNewTask)}>
-      <NewTaskInput {...register('description')}/>
+      <NewTaskInput 
+        {...register('description')}
+        required
+      />
 
       <NewTaskButtonContainer 
         type="submit" 

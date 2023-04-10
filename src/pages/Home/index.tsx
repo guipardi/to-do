@@ -6,11 +6,14 @@ import { TasksContext } from "../../contexts/TasksContext";
 export function Home() {
   const { tasks } = useContext(TasksContext)
   console.log(tasks)
+
   return (
     <>
       { tasks.length > 0 ? (
         <WithTasks>
-          <h1>Tasks</h1>
+          {tasks.map((task) => {
+            return <p key={String(task.id)}>{task.description}</p>
+          })}
         </WithTasks>      
       ) : (
         <NoTasksContainer>
