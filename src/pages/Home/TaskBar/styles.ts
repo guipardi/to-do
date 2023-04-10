@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 export const TaskBarContainer = styled.div`
   width: 46rem;
-  height: 4.5rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1.5rem 1fr 1.5rem;
+  gap: 1rem;
 
   background-color: ${(props) => props.theme["gray-500"]};
   border: 1px solid ${(props) => props.theme["gray-400"]};
@@ -16,6 +15,8 @@ export const TaskBarContainer = styled.div`
   margin-top: 1rem;
 
   p {
+    display: flex;
+    align-self: center;
     color: ${(props) => props.theme["gray-100"]};
     font-family: 'Inter' sans-serif;
     font-size: 0.875rem;
