@@ -7,13 +7,19 @@ interface TaskBarProps {
 }
 
 export function TaskBar({ task }: TaskBarProps) {
+  const [isChecked, setIsChecked] = useState(false)
+
+  function handleChange() {
+    setIsChecked(!isChecked)
+  }
+
   return (
     <TaskBarContainer>
-      <input type="checkbox" />
-      <p>{task}</p>
+      <input type="checkbox" checked={isChecked} onChange={handleChange}/>
+      <p style={{textDecoration: isChecked ? "line-through" : "none"}}>{task}</p>
       <button>
         <Trash />
       </button>
-    </TaskBarContainer>
+    </TaskBarContainer> 
   )
 }

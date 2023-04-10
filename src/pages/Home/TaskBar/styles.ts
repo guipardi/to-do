@@ -13,6 +13,7 @@ export const TaskBarContainer = styled.div`
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   padding: 1rem;
+  margin-top: 1rem;
 
   p {
     color: ${(props) => props.theme["gray-100"]};
@@ -30,4 +31,21 @@ export const TaskBarContainer = styled.div`
     font-size: 1.5rem;
     cursor: pointer;
   }
+
+  input[type="checkbox"] {
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid ${(props) => props.theme.blue};
+    outline: none;
+    cursor: pointer;
+    position: relative;
+  }
+
+  input[type="checkbox"]:checked {
+    background-color: ${(props) => props.theme["purple"]};
+    border-color: ${(props) => props.theme["purple"]};
+  } 
 `

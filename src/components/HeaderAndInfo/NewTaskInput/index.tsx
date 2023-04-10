@@ -10,7 +10,7 @@ export function NewTask() {
   const { createNewTask } = useContext(TasksContext)
 
   const newTaskFormSchema = zod.object({
-    description: zod.string().min(1).max(30)
+    description: zod.string().min(1)
   })
 
   type newTaskFormInputs = zod.infer<typeof newTaskFormSchema>
