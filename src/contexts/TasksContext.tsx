@@ -2,7 +2,8 @@ import { ReactNode, createContext, useState } from "react";
 
 interface Task {
   description: string
-  id: Date
+  id: Date,
+  completed: boolean
 }
 
 interface TasksContextType {
@@ -21,7 +22,7 @@ export function TasksProvider({children}: TasksProviderProps) {
   const [tasks, setTasks] = useState<Task[]>([])
 
   function createNewTask(data: any) {
-    setTasks((state) => [...state, {description: data.description, id: new Date()}])
+    setTasks((state) => [...state, {description: data.description, id: new Date(), completed: false}])
   }
 
   function deleteTask(id: string) {

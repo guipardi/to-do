@@ -6,16 +6,18 @@ import { TasksContext } from "../../../contexts/TasksContext";
 interface TaskBarProps {
   task: {
     description: string,
-    id: Date
+    id: Date,
+    completed: boolean
   }
 }
 
 export function TaskBar({ task }: TaskBarProps) {
-  const [isChecked, setIsChecked] = useState(false)
+  const [completed, setCompleted] = useState(false)
   const { deleteTask } = useContext(TasksContext)
 
   function handleChange() {
-    setIsChecked(!isChecked)
+    setCompleted(!completed)
+
   }
 
   function handleDeleteTask(id: string) {
@@ -24,8 +26,8 @@ export function TaskBar({ task }: TaskBarProps) {
 
   return (
     <TaskBarContainer>
-      <input type="checkbox" checked={isChecked} onChange={handleChange}/>
-      <p style={{textDecoration: isChecked ? "line-through" : "none"}}>{task.description}</p>
+      <input type="checkbox" checked={completed} onChange={handleChange}/>
+      <p style={{textDecoration: completed ? "line-through" : "none"}}>{task.description}</p>
       <button type="button" onClick={() => handleDeleteTask(String(task.id))}>
         <Trash />
       </button>
